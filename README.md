@@ -10,3 +10,5 @@ Legal_Document_Similarity requires:
 - nltk (>=3.8.1)
 - python-docx (>=0.8.11)
 - PyPDF2 (>=3.0.1)
+
+`` pip install -r requirements.txt ``
