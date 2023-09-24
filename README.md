@@ -21,5 +21,7 @@ Installing requirements using ``pip``
 
 ## Documentation
 
-````update_embeddings(self,pdf_path,law_book_sentences='law_book.txt',book_path = True,folder_path = False)````
+````
+update_embeddings(self,pdf_path,law_book_sentences='law_book.txt',book_path = True,folder_path = False)
+````
 -
