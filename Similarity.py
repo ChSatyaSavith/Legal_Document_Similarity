@@ -9,6 +9,17 @@ import PyPDF2
 import docx
 import os
 
+#Importing Libraries
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from nltk.tokenize import sent_tokenize
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+import pandas as pd
+import PyPDF2
+import docx
+import os
+
 #Class For Similarity Checker
 class LegalDocumentSimilarity:
     def __init__(self):
@@ -65,16 +76,16 @@ class LegalDocumentSimilarity:
         #Updating the Law Corpus TF-IDF
         self.law_corpus_tfidf = self.vectorizer.fit_transform(self.book_lines)
         
-    def read_docx(self,folder_path):
+    def read_docx(self,pdf_path):
         #Reading all the Documents given the Folder Path
         self.doc_sentences = []
-        for filename in os.listdir(folder_path):
-            if filename.endswith(".docx"):
-                docx_path = os.path.join(folder_path, filename)
-                doc = docx.Document(docx_path)
-                text = " ".join([p.text for p in doc.paragraphs])
-                doc_sentences = sent_tokenize(text)
-                self.doc_sentences.extend(doc_sentences)
+        with open(pdf_path, "rb") as pdf_file:
+            pdf_reader = PyPDF2.PdfReader(pdf_file)
+            text = ""
+            for page_num in range(len(pdf_reader.pages)):
+                text += pdf_reader.pages[page_num].extract_text()
+        doc_sentences = sent_tokenize(text)
+        self.doc_sentences.extend(doc_sentences)
         self.document_tfidf = self.vectorizer.transform(self.doc_sentences)
         
     def checkSimilarity(self):
@@ -98,6 +109,8 @@ class LegalDocumentSimilarity:
 
         # Filter out rows where either column contains only numeric values or special characters
         self.dataframe = self.dataframe[~(self.dataframe['Generated Document'].str.match(pattern) | self.dataframe['Similar_Line in Acts'].str.match(pattern))]
+        self.dataframe['Generated Document'] = self.dataframe['Generated Document'].str.replace(r'\n', ' ').str.replace(r'[^a-zA-Z0-9\s]', '')
+        self.dataframe['Similar_Line in Acts'] = self.dataframe['Similar_Line in Acts'].str.replace(r'\n', ' ').str.replace(r'[^a-zA-Z0-9\s]', '')
         self.percentage_match = (len(self.dataframe)/len(self.doc_sentences))*100
         
     
@@ -134,3 +147,4 @@ class LegalDocumentSimilarity:
         
     def save_Acts(self,path):
         self.create_pdf(self.dataframe,path)
+
