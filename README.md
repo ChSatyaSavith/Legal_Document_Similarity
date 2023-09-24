@@ -5,7 +5,7 @@ git clone https://github.com/ChSatyaSavith/Legal_Document_Similarity.git
 ````
 ## Installation
 ### Dependencies
-Legal_Document_Similarity requires:
+Legal_Document_Similarity requires:-
 - numpy (>=1.23.5)
 - pandas (>=1.5.2)
 - scikit-learn (>=1.2.2)
