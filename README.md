@@ -32,7 +32,7 @@ update_embeddings(pdf_path,law_book_sentences='law_book.txt',book_path = True,fo
 ````
 read_docx(folder_path)
 ````
-- Pass the folder path which contains your generated documents
+- Pass the pdf path of the generated document
 
 ````
 checkSimilarity()
