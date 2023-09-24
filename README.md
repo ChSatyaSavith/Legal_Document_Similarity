@@ -11,6 +11,6 @@ Legal_Document_Similarity requires:
 - python-docx (>=0.8.11)
 - PyPDF2 (>=3.0.1)
 
-Installing requirements using ``pip``::
+Installing requirements using ``pip``
 
     pip install -r requirements.txt
