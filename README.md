@@ -41,7 +41,7 @@ checkSimilarity()
 - Create a dataframe which has three columns Generated_Document, Similar_Line in Acts and Similarity_Score
 - Also creates a variable percentage_match which tells us the percentage of match between the generated document and the law book
 
-  ````
-  save_Acts(path)
-  ````
-  - Saves the dataframe in question, answer and similarity score format at the specified path
+````
+save_Acts(path)
+````
+- Saves the dataframe in question, answer and similarity score format at the specified path
