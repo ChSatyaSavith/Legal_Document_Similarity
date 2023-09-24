@@ -24,4 +24,5 @@ Installing requirements using ``pip``
 ````
 update_embeddings(self,pdf_path,law_book_sentences='law_book.txt',book_path = True,folder_path = False)
 ````
--
+- Either pass the path of folder which contains Law Documents in which case set book_path = False and set folder_path = True or pass the path of Law Document in which case set book_path = True and set folder_path = False
+- law_book_sentences contains the path of where the Law Book will be saved at
