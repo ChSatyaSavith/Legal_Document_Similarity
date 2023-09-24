@@ -14,3 +14,5 @@ Legal_Document_Similarity requires:
 Installing requirements using ``pip``
 
     pip install -r requirements.txt
+
+## Documentation
