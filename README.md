@@ -45,3 +45,12 @@ checkSimilarity()
 save_Acts(path)
 ````
 - Saves the dataframe in question, answer and similarity score format at the specified path
+
+## Sample Code
+````
+from Similarity import LegalDocumentSimilarity
+obj = LegalDocumentSimilarity()
+obj.read_docx(pdf_path)
+obj.checkSimilarity()
+obj.save_Acts('output.pdf')
+````
