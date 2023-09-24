@@ -4,4 +4,4 @@ The **Legal_Document_Similarity** class is designed for comparing legal document
 ## Installation
 ### Dependencies
 Legal_Document_Similarity requires:
- * fsfsd
+       * fsfsd
